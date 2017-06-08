@@ -1,0 +1,19 @@
+header {
+    height: 100px;
+}
+
+footer {
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #DCDCDC;
+}
+
+#main {
+    height: 500px;
+    text-align: center;
+}
+
+.f-link {
+    text-align: center;
+}
