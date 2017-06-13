@@ -4,22 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="javascript/questions.js"></script>
-    <script type="text/javascript" src="main.js"></script>
-    <script type="text/javascript" src="functions.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="media/style.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="javascript/questions.js"></script>
+    <script type="text/javascript" src="javascript/functions.js"></script>
+    <script type="text/javascript" src="javascript/main.js"></script>
     <title>Case Interview Math Practice Software</title>
 </head>
 <body>
-    <header id="header">
+    <header id="header" class="navbar navbar-fixed-top">
         <p>Interview Math</p>
         <p>Practice Software</p>
     </header>
+    <div id="slider" class="hidden-md"></div>
     <div id="main" class="container-fluid">
-        <h1>Welcome to your case interview math practice software</h1>
-        <p>Press Return for next question</p>
+        <div class="row top80">
+            <div class="col-sm-8 col-sm-offset-2 main bottom80">
+
+            </div>
+            <div class="col-sm-2 sidebar sidebar_right hidden-xs text-right hide">
+                <ul id="filters">
+                  <li class="filter cat bottom10 all">ALL CATEGORIES</li>
+                  <li class="filter cat bottom10 text-grey assumptions">Assumptions</li>
+                  <li class="filter cat bottom10 text-grey estimation">Estimation</li>
+                  <li class="filter cat bottom10 text-grey profitability">Profitability</li>
+                  <li class="filter cat bottom10 text-grey breakeven">Breakeven</li>
+                  <li class="filter cat bottom10 text-grey elasticity">Price Elasticity</li>
+                  <li class="filter cat bottom10 text-grey lifetime">Lifetime Value</li>
+                </ul>
+            </div>
+        </div>
+        <!-- <h1>Welcome to your case interview math practice software</h1>
+        <p>Press Return for next question</p> -->
     </div>
     <footer id="footer">
         <p class="f-link"><a href="http://amzn.to/1z0qR2t">Answers to case interview math problems</a></p>
