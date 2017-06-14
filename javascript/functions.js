@@ -14,14 +14,16 @@ function next_question(){
     var newQuestion = InterviewMath.Data.Questions.shift();
 
     if (newQuestion){
-        $('#question').removeClass('hide');
-        $('#timer').show();
-        $('#answer').removeClass('hide');
-        $('#end').addClass('hide');
 
         var question = newQuestion['question'];
         var sTag = newQuestion['tag'];
         var sSource = newQuestion['src'];
+
+        $('#question_text').text(question);
+        $('#question').removeClass('hide');
+        $('#timer').show();
+        $('#answer').removeClass('hide');
+        $('#end').addClass('hide');
 
         if (subCategory == "ALL CATEGORIES" || sTag == subCategory){
             $('#question_text').text(question);
@@ -38,8 +40,6 @@ function next_question(){
         InterviewMath.Data.Passed = [];
 
         timer_stop();
-        $('#question').addClass('hide');
-        // $('#timer').hide();
         $('#end').removeClass('hide');
 
         if (InterviewMath.Data.Questions.length == 0){
