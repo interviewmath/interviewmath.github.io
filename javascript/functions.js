@@ -39,7 +39,7 @@ function next_question(){
 
         timer_stop();
         $('#question').addClass('hide');
-        $('#timer').hide();
+        // $('#timer').hide();
         $('#end').removeClass('hide');
 
         if (InterviewMath.Data.Questions.length == 0){
@@ -75,7 +75,7 @@ function animateOut($filter, delay){
 
 // Timer Functions
 
-var timer;
+var timer = 0;
 
 function timer_tick(){
 
@@ -83,7 +83,7 @@ function timer_tick(){
 
     var seconds = timer%60;
 
-    if (seconds <10){
+    if (seconds < 10){
         seconds = '0' + seconds;
     }
 

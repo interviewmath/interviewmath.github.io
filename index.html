@@ -14,14 +14,18 @@
 </head>
 <body>
     <header id="header" class="navbar navbar-fixed-top">
-        <p>Interview Math</p>
-        <p>Practice Software</p>
+        <p class="title">Interview Math</p>
+        <p class="title">Practice Software</p>
     </header>
     <div id="slider" class="hidden-md"></div>
     <div id="main" class="container-fluid">
         <div class="row top80">
-            <div class="col-sm-8 col-sm-offset-2 main bottom80">
-
+            <div class="col-sm-8 col-sm-offset-2 main text-center bottom80">
+                <div id="question">
+                    <h1 id="question_text">Welcome to your case interview math practice software</h1>
+                </div>
+                <div id="timer"></div>
+                <h3 class="desktop_controls hidden-xs text-grey">Press <button class="btn btn-action">return <span id="carriage">&#8629;</span></button> for next question</h3>
             </div>
             <div class="col-sm-2 sidebar sidebar_right hidden-xs text-right hide">
                 <ul id="filters">
@@ -35,14 +39,26 @@
                 </ul>
             </div>
         </div>
-        <!-- <h1>Welcome to your case interview math practice software</h1>
-        <p>Press Return for next question</p> -->
     </div>
     <footer id="footer">
-        <p class="f-link"><a href="http://amzn.to/1z0qR2t">Answers to case interview math problems</a></p>
-        <p class="f-link"><a href="http://www.impactinterview.com/2017/01/market-sizing-numbers-to-know">Market sizing numbers to know</a></p>
-        <p class="f-link"><a href="http://bit.ly/InterviewPartner">Free case interview partners</a></p>
-        <p class="f-link"><a href="http://amzn.to/2r2VItl">Best book for case interview preparation</a></p>
+        <div class="container-fluid">
+            <small class="row">
+                <div class="col-sm-12 hidden-xs">
+                    <div class="col-xs-3">
+                        <p class="f-link"><a href="http://amzn.to/1z0qR2t">Answers to case interview math problems</a></p>
+                    </div>
+                    <div class="col-xs-3">
+                        <p class="f-link"><a href="http://www.impactinterview.com/2017/01/market-sizing-numbers-to-know">Market sizing numbers to know</a></p>
+                    </div>
+                    <div class="col-xs-3">
+                        <p class="f-link"><a href="http://bit.ly/InterviewPartner">Free case interview partners</a></p>
+                    </div>
+                    <div class="col-xs-3">
+                        <p class="f-link"><a href="http://amzn.to/2r2VItl">Best book for case interview preparation</a></p>
+                    </div>
+                </div>
+            </small>
+        </div>
     </footer>
 </body>
 </html>

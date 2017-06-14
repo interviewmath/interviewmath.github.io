@@ -4,14 +4,18 @@ var Timeout;
     InterviewMath.Data.Questions = [InterviewMath.Data.Questions.shift()].concat(InterviewMath.Data.Questions.sort(function(){return 0.5 - Math.random()}));
     InterviewMath.Data.Tips.sort(function(){return 0.5 - Math.random()});
 
+    var bMobile;
+
     $(document).ready(function(){
 
         timer_tick();
         $('#timer').hide();
 
-        $('#dropdown_selector').click(function(event){
-            $(this).toggleClass('active');
-        })
+        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+            bMobile = true;
+            $('.mobile_controls').show();
+            $('.desktop_controls').hide();
+        }
 
         var $cat = $('filter:last-child');
 
@@ -19,31 +23,15 @@ var Timeout;
         $(this).removeClass('text-grey');
 
         subCategory = $(this).text().toUpperCase();
+
         if($('.desktop_controls').css('display') == "none" && $('.mobile_controls').css('display') == "none"  && $(this).text() !== 'ALL CATEGORIES'){
             next_question();
         }
 
         $cat.detach();
 
-        $(document).click(function(e){
-            if (e.target !== $('#current_selector')[0]){
-                if ($('#dropdown_selector').hasClass('active')){
-                    $('#dropdown_selector').removeClass('active');
-                    return 0;
-                }
-            }
-        })
-
         $("#slider").click(function(e){
-            if (e.target === $(this)[0]){
-                if ($('#dropdown_selector').hasClass('active')){
-                    $('#dropdown_selector').removeClass('active');
-                    return 0;
-                }
-                else {
-                    next_question();
-                }
-            }
+            next_question();
         });
 
         $(document).keypress(function(e){
