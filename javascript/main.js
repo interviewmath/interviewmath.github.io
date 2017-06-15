@@ -15,6 +15,12 @@ var Timeout;
         });
 
         $('.filter').click(function(){
+            if (InterviewMath.Data.Questions.length == 0){
+                InterviewMath.Data.Questions = InterviewMath.Data.Passed;
+                InterviewMath.Data.Passed = [];
+                $('#end').addClass('hide');
+                $('#question').removeClass('hide');
+            }
             subCategory = $(this).text().toUpperCase();
             next_question();
         });

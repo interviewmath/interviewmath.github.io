@@ -20,12 +20,9 @@ function next_question(){
         var sTag = newQuestion['tag'];
         var sSource = newQuestion['src'];
 
-        // $('#question_text').text(question);
-        // $('#question').removeClass('hide');
-        // $('#timer').show();
-
         if (subCategory == "ALL CATEGORIES" || sTag == subCategory){
             $('#question_text').text(question);
+            InterviewMath.Data.Passed.push(newQuestion);
             timer_restart();
         }
         else {
@@ -34,21 +31,18 @@ function next_question(){
         }
     }
     else {
-        InterviewMath.Data.Questions = InterviewMath.Data.Passed;
-        InterviewMath.Data.Passed = [];
-        $('#end').addClass('hide');
-    }
 
-    if (InterviewMath.Data.Questions.length == 0){
-        if (subCategory == "ALL CATEGORIES"){
-            $('#end').addClass('hide');
-            $('#question_text').text("All questions answered.");
+        if (InterviewMath.Data.Questions.length == 0){
+            if (subCategory == "ALL CATEGORIES"){
+                $('#end').addClass('hide');
+                $('#question_text').text("All questions answered.");
+            }
+            else {
+                $('#end').removeClass('hide');
+                $('#question').addClass('hide');
+            }
+            $('#timer').hide();
         }
-        else {
-            $('#end').removeClass('hide');
-            $('#question').addClass('hide');
-        }
-        $('#timer').hide();
     }
 }
 
