@@ -15,8 +15,8 @@ var Timeout;
         });
 
         $('.filter').click(function(){
-            InterviewMath.Data.Questions = InterviewMath.Data.FullList;
             subCategory = $(this).text().toUpperCase();
+            InterviewMath.Data.Questions = InterviewMath.Data.FullList;
             next_question();
         });
 
@@ -28,14 +28,15 @@ var Timeout;
             }
         });
 
+        $('.sidebar_right').mouseenter(function(){
+            if (! $('.sidebar').hasClass('.hide')){
+                clearTimeout(Timeout);
+                showFilters();
+            }
+        });
+
         $('.sidebar_right').mouseleave(function(){
             Timeout = setTimeout(hideFilters, 4000)
         });
-
-        $('.sidebar_right').mouseenter(function(){
-            showFilters();
-        });
-
-
     })
 })();
