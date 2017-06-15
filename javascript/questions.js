@@ -58,6 +58,4 @@ InterviewMath.Data.Questions = [
     {"question":"What is the customer lifetime value for New York Times’ website?", "tag":"LIFETIME VALUE", "src":"int-math"}
 ];
 
-InterviewMath.Data.Passed = [];
-
-InterviewMath.Data.Tips = [];
+InterviewMath.Data.FullList = InterviewMath.Data.Questions;

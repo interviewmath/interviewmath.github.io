@@ -37,7 +37,14 @@ function next_question(){
     }
 
     if (InterviewMath.Data.Questions.length == 0){
-        $('#question_text').text("All questions answered.");
+        if (subCategory == "ALL CATEGORIES"){
+            $('#end').addClass('hide');
+            $('#question_text').text("All questions answered.");
+        }
+        else {
+            $('#end').removeClass('hide');
+            $('#question').addClass('hide');
+        }
         $('#timer').hide();
     }
 }
