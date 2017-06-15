@@ -5,7 +5,7 @@ function next_question(){
     if ($('.sidebar').hasClass('hide')){
         $('.sidebar').removeClass('hide');
         showFilters();
-        Timeout = setTimeout(hideFilters, 5000)
+        Timeout = setTimeout(hideFilters, 4000)
     }
 
     $('.desktop_controls').hide();
@@ -14,6 +14,7 @@ function next_question(){
     var newQuestion = InterviewMath.Data.Questions.shift();
 
     if (newQuestion){
+        $('#end').addClass('hide');
 
         var question = newQuestion['question'];
         var sTag = newQuestion['tag'];
@@ -22,29 +23,22 @@ function next_question(){
         $('#question_text').text(question);
         $('#question').removeClass('hide');
         $('#timer').show();
-        $('#answer').removeClass('hide');
-        $('#end').addClass('hide');
 
         if (subCategory == "ALL CATEGORIES" || sTag == subCategory){
             $('#question_text').text(question);
             timer_restart();
         }
         else {
-            InterviewMath.Data.Passed.push(newQuestion);
             next_question();
         }
-
-        $('#answer').addClass('hide');
-
-        InterviewMath.Data.Questions = InterviewMath.Data.Passed;
-        InterviewMath.Data.Passed = [];
-
-        timer_stop();
+    }
+    else {
         $('#end').removeClass('hide');
+    }
 
-        if (InterviewMath.Data.Questions.length == 0){
-            $('#end').children('h1').text("All questions answered.")
-        }
+    if (InterviewMath.Data.Questions.length == 0){
+        $('#question_text').text("All questions answered.");
+        $('#timer').hide();
     }
 }
 

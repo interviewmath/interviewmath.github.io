@@ -11,26 +11,12 @@ var Timeout;
         timer_tick();
         $('#timer').hide();
 
-        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
-            bMobile = true;
-            $('.mobile_controls').show();
-            $('.desktop_controls').hide();
-        }
-
-        var $cat = $('filter:last-child');
-
-        $('.filter').addClass('text-grey');
-        $(this).removeClass('text-grey');
-
-        subCategory = $(this).text().toUpperCase();
-
-        if($('.desktop_controls').css('display') == "none" && $('.mobile_controls').css('display') == "none"  && $(this).text() !== 'ALL CATEGORIES'){
+        $("#slider").click(function(){
             next_question();
-        }
+        });
 
-        $cat.detach();
-
-        $("#slider").click(function(e){
+        $('.filter').click(function(){
+            subCategory = $(this).text().toUpperCase();
             next_question();
         });
 
@@ -43,7 +29,13 @@ var Timeout;
         });
 
         $('.sidebar_right').mouseleave(function(){
-            Timeout = setTimeout(hideFilters, 5000)
-        })
+            Timeout = setTimeout(hideFilters, 4000)
+        });
+
+        $('.sidebar_right').mouseenter(function(){
+            showFilters();
+        });
+
+
     })
 })();
