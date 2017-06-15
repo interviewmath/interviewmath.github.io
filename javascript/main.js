@@ -16,7 +16,6 @@ var Timeout;
 
         $('.filter').click(function(){
             subCategory = $(this).text().toUpperCase();
-            InterviewMath.Data.Questions = InterviewMath.Data.FullList;
             next_question();
         });
 
