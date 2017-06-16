@@ -174,12 +174,17 @@ a:visited {
     margin-left: 2.5%;
     font-size: 2.5em;
     font-family: 'Roboto', sans-serif;
-    color: #B2201A;
+    color: white;
 }
 
 .title2 {
     margin-left: 2.5%;
     font-size: 1.5em;
     font-family: 'Roboto', sans-serif;
-    color: white;
+    color: #B2201A;
+}
+
+button {
+    background-color:  #B2201A;
+    color:  white;
 }
