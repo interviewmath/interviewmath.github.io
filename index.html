@@ -2,31 +2,24 @@
 <html lang="en">
 <head>
     <title>Case Interview Math Practice Software</title>
+    <meta name="description" content="Improve your case interview math with our timed software, along with resources to see answers and find case interview partners.">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Cache-control" content="public">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="media/style.css">
     <link rel="icon" type="image/png" href="media/icon.png">
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <!-- <script type="text/javascript" src="javascript/questions.js"></script> -->
-    <!-- <script type="text/javascript" src="javascript/functions.js"></script> -->
-    <!-- <script type="text/javascript" src="javascript/main.js"></script> -->
     <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-      ga('create', 'UA-101104142-1', 'auto');
-      ga('send', 'pageview');
-    </script>
-    <script>
+        // This website is inspired by www.thepminterview.com, created by Raphaël Korach
+
         var InterviewMath = {};
 
         InterviewMath.Data = {};
-        
+
         InterviewMath.Data.Questions = [
             {"question":"How many BMW dealerships are in the United States?", "tag":"ASSUMPTIONS", "src":"int-math"},
             {"question":"How many airports are in the United States?", "tag":"ASSUMPTIONS", "src":"int-math"},
@@ -203,11 +196,18 @@
                 timer_tick();
                 $('#timer').hide();
 
+                $('a').click(function(){
+                    var clickedLink = this.href;
+                    ga('send', 'event', 'link', 'click', clickedLink);
+                });
+
                 $("#slider").click(function(){
                     next_question();
                 });
 
                 $('.filter').click(function(){
+                    ga('send', 'event', 'filter', 'change', $(this).text());
+
                     if (InterviewMath.Data.Questions.length == 0){
                         InterviewMath.Data.Questions = InterviewMath.Data.Passed;
                         InterviewMath.Data.Passed = [];
@@ -238,6 +238,14 @@
                 });
             })
         })();
+    </script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-101104142-1', 'auto');
+      ga('send', 'pageview');
     </script>
 </head>
 <body>
