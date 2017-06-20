@@ -13,21 +13,20 @@ body {
 }
 
 header {
-    height: 15%;
+    height: 10%;
 }
 
 footer {
-    height: 10%;
+    height: 7%;
     position: fixed;
     width: 100%;
     bottom: 0;
-    padding: 5px;
-    background-color: #000153;
+    background-color: #000E60;
 }
 
 h1 {
     font-size: 1.75em;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Droid Sans', sans-serif;
 }
 
 ul {
@@ -47,7 +46,7 @@ a:hover {
 }
 
 a:visited {
-    color: #4CAF50;
+    color: #AC0B08;
 }
 
 #main {
@@ -55,32 +54,12 @@ a:visited {
     width: 100%;
     text-align: center;
     vertical-align: middle;
-    margin-top: 5%;
-    background:
-    	linear-gradient(-90deg, rgba(0,0,0,.05) 1px, transparent 1px),
-    	linear-gradient(rgba(0,0,0,.05) 1px, transparent 1px),
-    	linear-gradient(-90deg, rgba(0, 0, 0, .04) 1px, transparent 1px),
-    	linear-gradient(rgba(0,0,0,.04) 1px, transparent 1px),
-    	linear-gradient(transparent 3px, #f2f2f2 3px, #f2f2f2 78px, transparent 78px),
-    	linear-gradient(-90deg, #aaa 1px, transparent 1px),
-    	linear-gradient(-90deg, transparent 3px, #f2f2f2 3px, #f2f2f2 78px, transparent 78px),
-    	linear-gradient(#aaa 1px, transparent 1px),
-    	#f2f2f2;
-    background-size:
-    	4px 4px,
-    	4px 4px,
-    	80px 80px,
-    	80px 80px,
-    	80px 80px,
-    	80px 80px,
-    	80px 80px,
-    	80px 80px;
+    background-color: #e3e4e5;
 }
 
 #header {
-	padding-top: 20px;
-	padding-bottom: 20px;
-	background-color: #000153;
+	background-color: #000E60;
+    padding-top: 5px;
 }
 
 #timer {
@@ -116,6 +95,10 @@ a:visited {
   margin-top: 200px;
 }
 
+#question_text {
+    line-height: 1.5;
+}
+
 .filter {
   cursor: pointer;
   margin-right: -400px;
@@ -145,7 +128,21 @@ a:visited {
 .f-link {
     text-align: center;
     vertical-align: middle!important;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Droid Sans', sans-serif;
+    position: relative;
+    bottom: 10px;
+}
+
+.f-link-small {
+    text-align: center;
+    vertical-align: middle!important;
+    font-family: 'Droid Sans', sans-serif;
+    position: relative;
+    bottom: 25px;
+}
+
+.desktop_controls {
+    font-size: 1.5em;
 }
 
 .top80 {
@@ -173,15 +170,16 @@ a:visited {
 .title1 {
     margin-left: 2.5%;
     font-size: 2.5em;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Martel Sans', sans-serif;
     color: white;
 }
 
 .title2 {
     margin-left: 2.5%;
     font-size: 1.5em;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Martel Sans', sans-serif;
     color: #B2201A;
+    line-height: 0.2;
 }
 
 button {
