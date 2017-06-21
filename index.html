@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="media/style.css">
     <link rel="icon" type="image/png" href="media/icon.png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Sans:700">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Martel+Sans">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script>
         // This website is inspired by www.thepminterview.com, created by Raphaël Korach
@@ -91,6 +91,10 @@
 
             $('.desktop_controls').hide();
             $('.mobile_controls').hide();
+
+            if(!$('#question_text').hasClass('helvetica')){
+                $('#question_text').addClass('helvetica');
+            }
 
             var newQuestion = InterviewMath.Data.Questions.shift();
 
