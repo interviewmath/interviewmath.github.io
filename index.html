@@ -10,17 +10,17 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="media/style.css">
     <link rel="icon" type="image/png" href="media/icon.png">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Sans:700">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Sans">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:700">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script>
         // This website is inspired by www.thepminterview.com, created by Raphaël Korach
 
-        var InterviewMath = {};
+        var interviewMath = {};
 
-        InterviewMath.Data = {};
+        interviewMath.data = {};
 
-        InterviewMath.Data.Questions = [
+        interviewMath.data.questions = [
             {"question":"How many BMW dealerships are in the United States?", "tag":"ASSUMPTIONS", "src":"int-math"},
             {"question":"How many airports are in the United States?", "tag":"ASSUMPTIONS", "src":"int-math"},
             {"question":"What is the market size of disposable diapers in China?", "tag":"ESTIMATION", "src":"int-math"},
@@ -76,58 +76,75 @@
             {"question":"What is the customer lifetime value for New York Times’ website?", "tag":"LIFETIME VALUE", "src":"int-math"}
         ];
 
-        InterviewMath.Data.Passed = [];
-    </script>
-    <script>
-        var subCategory = "ALL CATEGORIES"
+        interviewMath.data.shown = [];
 
-        function next_question(){
+        var currentSubCategory = "ALL CATEGORIES"
 
-            if ($('.sidebar').hasClass('hide')){
-                $('.sidebar').removeClass('hide');
-                showFilters();
-                Timeout = setTimeout(hideFilters, 4000)
-            }
+        var timeOut;
+
+        function initializeQuestionQueue(){
+            interviewMath.data.questions = interviewMath.data.questions.sort(function(){return 0.5 - Math.random()});
+        }
+
+        function resetQuestionQueue(){
+                interviewMath.data.questions = interviewMath.data.shown;
+                interviewMath.data.shown = [];
+                initializeQuestionQueue();
+                $('#end').addClass('hide');
+                $('#question').removeClass('hide');
+        }
+
+        function showNextQuestion(){
+
+            $('#question_text').css("margin-top", "20px");
 
             $('.desktop_controls').hide();
             $('.mobile_controls').hide();
 
-            if(!$('#question_text').hasClass('helvetica')){
-                $('#question_text').addClass('helvetica');
+            if ($('.sidebar').hasClass('hide')){
+                $('.sidebar').removeClass('hide');
+                showFilters();
+                timeOut = setTimeout(hideFilters, 4000)
             }
 
-            var newQuestion = InterviewMath.Data.Questions.shift();
+            var newQuestionObject = interviewMath.data.questions.shift();
 
-            if (newQuestion){
-                $('#end').addClass('hide');
-
-                var question = newQuestion['question'];
-                var sTag = newQuestion['tag'];
-                var sSource = newQuestion['src'];
-
-                if (subCategory == "ALL CATEGORIES" || sTag == subCategory){
-                    $('#question_text').text(question);
-                    InterviewMath.Data.Passed.push(newQuestion);
-                    timer_restart();
-                }
-                else {
-                    InterviewMath.Data.Passed.push(newQuestion);
-                    next_question();
-                }
+            if (newQuestionObject){
+                displayQuestion(newQuestionObject);
             }
             else {
+                displayEndofQuestionsMessage();
+            }
+        }
 
-                if (InterviewMath.Data.Questions.length == 0){
-                    if (subCategory == "ALL CATEGORIES"){
-                        $('#end').addClass('hide');
-                        $('#question_text').text("All questions answered.");
-                    }
-                    else {
-                        $('#end').removeClass('hide');
-                        $('#question').addClass('hide');
-                    }
-                    $('#timer').hide();
+        function displayQuestion(questionObject){
+
+            $('#end').addClass('hide');
+
+            interviewMath.data.shown.push(questionObject);
+
+            if (currentSubCategory == "ALL CATEGORIES" || questionObject.tag == currentSubCategory){
+                $('#question_text').text(questionObject.question);
+                restartTimer();
+            }
+            else {
+                showNextQuestion();
+            }
+        }
+
+        function displayEndofQuestionsMessage(){
+
+            if (interviewMath.data.questions.length == 0){
+                if (currentSubCategory == "ALL CATEGORIES"){
+                    $('#end').addClass('hide');
+                    $('#question_text').text("All questions answered.");
                 }
+                else {
+                    $('#questionCategory').html(currentSubCategory.toLowerCase());
+                    $('#end').removeClass('hide');
+                    $('#question').addClass('hide');
+                }
+                $('#timer').hide();
             }
         }
 
@@ -158,46 +175,43 @@
 
         // Timer Functions
 
-        var timer = 0;
+        var secondsElapsed = 0;
 
-        function timer_tick(){
+        function updateTimer(){
 
-            timer = timer + 1;
+            secondsElapsed = secondsElapsed + 1;
 
-            var seconds = timer%60;
+            var seconds = secondsElapsed%60;
 
             if (seconds < 10){
                 seconds = '0' + seconds;
             }
 
-            var minutes = (timer - seconds)/60;
+            var minutes = (secondsElapsed - seconds)/60;
             $('#timer').html(minutes + ':' + seconds);
 
-            setTimeout('timer_tick();', 1000);
+            setTimeout('updateTimer();', 1000);
         }
 
-        function timer_restart(){
-            timer = 0;
+        function restartTimer(){
+            secondsElapsed = 0;
 
             $('#timer').html('0:00');
             $('#timer').show();
         }
 
-        function timer_stop(){
+        function stopTimer(){
             $('.link').addClass('end');
         }
     </script>
     <script>
-        var Timeout;
-
         (function(){
-            InterviewMath.Data.Questions = [InterviewMath.Data.Questions.shift()].concat(InterviewMath.Data.Questions.sort(function(){return 0.5 - Math.random()}));
 
-            var bMobile;
+            initializeQuestionQueue();
 
             $(document).ready(function(){
 
-                timer_tick();
+                updateTimer();
                 $('#timer').hide();
 
                 $('a').click(function(){
@@ -206,39 +220,38 @@
                 });
 
                 $("#slider").click(function(){
-                    next_question();
+                    showNextQuestion();
                 });
 
                 $('.filter').click(function(){
                     ga('send', 'event', 'filter', 'change', $(this).text());
 
-                    if (InterviewMath.Data.Questions.length == 0){
-                        InterviewMath.Data.Questions = InterviewMath.Data.Passed;
-                        InterviewMath.Data.Passed = [];
-                        $('#end').addClass('hide');
-                        $('#question').removeClass('hide');
+                    if (interviewMath.data.questions.length == 0){
+                        resetQuestionQueue();
                     }
-                    subCategory = $(this).text().toUpperCase();
-                    next_question();
+                    currentSubCategory = $(this).text().toUpperCase();
+                    showNextQuestion();
                 });
 
                 $(document).keypress(function(e){
+                    var enterKey = 13;
+
                     switch (e.which){
-                        case 13:
-                            next_question();
+                        case enterKey:
+                            showNextQuestion();
                             break;
                     }
                 });
 
                 $('.sidebar_right').mouseenter(function(){
                     if (! $('.sidebar').hasClass('.hide')){
-                        clearTimeout(Timeout);
+                        clearTimeout(timeOut);
                         showFilters();
                     }
                 });
 
                 $('.sidebar_right').mouseleave(function(){
-                    Timeout = setTimeout(hideFilters, 4000)
+                    timeOut = setTimeout(hideFilters, 4000)
                 });
             })
         })();
@@ -254,23 +267,25 @@
 </head>
 <body>
     <header id="header" class="navbar navbar-fixed-top">
-        <div class="title1">Interview Math</div>
+        <div class="title1">INTERVIEWMATH</div>
         <div class="title2">Practice Software</div>
     </header>
-    <div id="slider" class="hidden-md"></div>
+    <nav id="slider" class="hidden-md"></nav>
     <main id="main" class="container">
         <div class="row top80">
             <div class="col-sm-8 col-sm-offset-2 main text-center bottom80">
-                <div id="end" class="hide">
-                    <h2>That's all for this category!</h2>
-                </div>
                 <div id="question">
-                    <h1 id="question_text">Welcome to your case interview math practice software</h1>
+                    <h1 id="question_text" class="helvetica">Welcome to your case interview math practice software</h1>
+                </div>
+                <div id="end" class="hide">
+                    <h2>All questions for <span id="questionCategory"></span> answered!</h2>
                 </div>
                 <div id="timer"></div>
-                <p class="desktop_controls hidden-xs">Press <button class="btn btn-action">return <span id="carriage">&#8629;</span></button> for next question</p>
+                <p class="desktop_controls">
+                    Press <button class="btn btn-action">return <span id="carriage">&#8629;</span></button> for next question
+                </p>
             </div>
-            <div class="col-sm-2 sidebar sidebar_right hidden-xs text-right hide">
+            <div class="col-sm-2 sidebar sidebar_right text-right hide">
                 <ul id="filters">
                   <li class="filter cat bottom10">ALL CATEGORIES</li>
                   <li class="filter cat bottom10">Assumptions</li>
@@ -288,30 +303,30 @@
             <small class="row">
                 <div class="col-sm-12 hidden-xs">
                     <div class="col-xs-3">
-                        <p class="f-link"><a href="http://amzn.to/1z0qR2t">Answers to case interview math problems</a></p>
+                        <p><a href="http://amzn.to/1z0qR2t">Answers to case interview math problems</a></p>
                     </div>
                     <div class="col-xs-3">
-                        <p class="f-link"><a href="http://www.impactinterview.com/2017/01/market-sizing-numbers-to-know">Market sizing numbers to know</a></p>
+                        <p><a href="http://www.impactinterview.com/2017/01/market-sizing-numbers-to-know">Market sizing numbers to know</a></p>
                     </div>
                     <div class="col-xs-3">
-                        <p class="f-link"><a href="http://bit.ly/InterviewPartner">Free case interview partners</a></p>
+                        <p><a href="http://bit.ly/InterviewPartner">Free case interview partners</a></p>
                     </div>
                     <div class="col-xs-3">
-                        <p class="f-link"><a href="http://amzn.to/2r2VItl">Best book for case interview preparation</a></p>
+                        <p><a href="http://amzn.to/2r2VItl">Best book for case interview preparation</a></p>
                     </div>
                 </div>
                 <div class="col-sm-12 visible-xs-block">
                     <div class="col-xs-3">
-                        <p class="f-link-small"><a href="http://amzn.to/1z0qR2t">Answers</a></p>
+                        <p class="small_view"><a href="http://amzn.to/1z0qR2t">Answers</a></p>
                     </div>
                     <div class="col-xs-3">
-                        <p class="f-link-small"><a href="http://www.impactinterview.com/2017/01/market-sizing-numbers-to-know">Market sizing</a></p>
+                        <p class="small_view"><a href="http://www.impactinterview.com/2017/01/market-sizing-numbers-to-know">Market sizing</a></p>
                     </div>
                     <div class="col-xs-3">
-                        <p class="f-link-small"><a href="http://bit.ly/InterviewPartner">Partner on Slack!</a></p>
+                        <p class="small_view"><a href="http://bit.ly/InterviewPartner">Partner on Slack!</a></p>
                     </div>
                     <div class="col-xs-3">
-                        <p class="f-link-small"><a href="http://amzn.to/2r2VItl">Case interview book</a></p>
+                        <p class="small_view"><a href="http://amzn.to/2r2VItl">Case interview book</a></p>
                     </div>
                 </div>
             </small>
