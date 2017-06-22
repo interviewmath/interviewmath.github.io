@@ -83,7 +83,7 @@ p {
     position: absolute;
     left: -25px;
     top: 8px;
-    background-image: url('clock_grey.svg');
+    background-image: url('Clock_grey.svg');
     background-repeat: no-repeat;
     background-size: 100%;
 }
