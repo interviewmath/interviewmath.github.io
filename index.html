@@ -225,10 +225,6 @@
                     ga('send', 'event', 'link', 'click', clickedLink);
                 });
 
-                $("#slider").click(function(){
-                    showNextQuestion();
-                });
-
                 $('.filter').click(function(){
                     ga('send', 'event', 'filter', 'change', $(this).text());
 
@@ -247,6 +243,10 @@
                             showNextQuestion();
                             break;
                     }
+                });
+
+                $('#main').click(function(){
+                    showNextQuestion();
                 });
 
                 $('.sidebar_right').mouseenter(function(){
@@ -274,27 +274,26 @@
     </script>
 </head>
 <body>
-    <header id="header" class="navbar navbar-fixed-top">
+    <header id="header" class="navbar navbar-fixed-top head">
         <div class="title1">INTERVIEWMATH</div>
         <div class="title2">Practice Software</div>
     </header>
-    <nav id="slider" class="hidden-md"></nav>
-    <main id="main" class="container">
+    <main id="main" class="container main_content">
         <div class="row top80">
             <div class="col-sm-8 col-sm-offset-2 main text-center bottom80">
                 <div id="question">
-                    <h1 id="question_text" class="helvetica">Welcome to your case interview math practice software</h1>
+                    <h1 id="question_text" class="helvetica question_text">Welcome to your case interview math practice software</h1>
                 </div>
                 <div id="end" class="hide">
                     <h2>All questions for <span id="questionCategory"></span> answered!</h2>
                 </div>
-                <div id="timer"></div>
+                <div id="timer" class="timer"></div>
                 <p class="desktop_controls">
                     Press <button class="btn btn-action">return <span id="carriage">&#8629;</span></button> for next question
                 </p>
             </div>
             <div class="col-sm-2 sidebar sidebar_right text-right hide">
-                <ul id="filters">
+                <ul id="filters" class="filters">
                   <li class="filter cat bottom10">ALL CATEGORIES</li>
                 </ul>
             </div>

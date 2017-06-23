@@ -53,7 +53,7 @@ p {
     font-family: Helvetica, Arial, sans-serif;
 }
 
-#main {
+.main_content {
     height: 95%;
     width: 100%;
     text-align: center;
@@ -61,12 +61,12 @@ p {
     background-color: #e3e4e5;
 }
 
-#header {
+.head {
 	background-color: #000E60;
     padding-top: 5px;
 }
 
-#timer {
+.timer {
     width: 0px;
     margin: 0 auto 50px auto;
     font-size: 24px;
@@ -76,7 +76,7 @@ p {
     top: 10px;
 }
 
-#timer:after {
+.timer::after {
     content: "";
     width: 20px;
     height: 20px;
@@ -88,18 +88,11 @@ p {
     background-size: 100%;
 }
 
-#slider {
-    height: 100%;
-    width: 100%;
-    position: fixed;
-    top: 0;
-}
-
-#filters {
+.filters {
     margin-top: 200px;
 }
 
-#question_text {
+.question_text {
     line-height: 1.5;
     vertical-align: middle;
     margin-top: 25%;
