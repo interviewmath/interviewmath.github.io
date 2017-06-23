@@ -78,6 +78,8 @@
 
         interviewMath.data.shown = [];
 
+        interviewMath.data.topics = ['Assumptions', 'Estimation', 'Profitability', 'Breakeven', 'Price Elasticity', 'Lifetime Value'];
+
         var currentSubCategory = "ALL CATEGORIES"
 
         var timeOut;
@@ -211,6 +213,10 @@
 
             $(document).ready(function(){
 
+                for (let i=0; i<interviewMath.data.topics.length; i++){
+                    $('#filters').append("<li class='filter cat bottom10'>" + interviewMath.data.topics[i] + "</li>");
+                }
+
                 updateTimer();
                 $('#timer').hide();
 
@@ -257,12 +263,14 @@
         })();
     </script>
     <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-      ga('create', 'UA-101104142-1', 'auto');
-      ga('send', 'pageview');
+        // Google Analytics initialization
+
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-101104142-1', 'auto');
+        ga('send', 'pageview');
     </script>
 </head>
 <body>
@@ -288,12 +296,6 @@
             <div class="col-sm-2 sidebar sidebar_right text-right hide">
                 <ul id="filters">
                   <li class="filter cat bottom10">ALL CATEGORIES</li>
-                  <li class="filter cat bottom10">Assumptions</li>
-                  <li class="filter cat bottom10">Estimation</li>
-                  <li class="filter cat bottom10">Profitability</li>
-                  <li class="filter cat bottom10">Breakeven</li>
-                  <li class="filter cat bottom10">Price Elasticity</li>
-                  <li class="filter cat bottom10">Lifetime Value</li>
                 </ul>
             </div>
         </div>
