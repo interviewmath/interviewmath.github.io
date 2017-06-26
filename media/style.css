@@ -13,15 +13,24 @@ body {
 }
 
 header {
-    height: 10%;
+    height: 70px;
 }
 
 footer {
-    height: 7%;
+    height: 50px;
     position: fixed;
     width: 100%;
     bottom: 0;
     background-color: #000E60;
+}
+
+footer a {
+    text-align: center;
+    vertical-align: middle;
+    font-family: 'Droid Sans', sans-serif;
+    font-weight: 400;
+    position: relative;
+    top: 5px;
 }
 
 h1 {
@@ -42,7 +51,7 @@ a {
 }
 
 a:hover {
-    color: #AC0B08;
+    color: #AC0B08!important;
 }
 
 a:visited {
@@ -53,8 +62,13 @@ p {
     font-family: Helvetica, Arial, sans-serif;
 }
 
+button {
+    background-color:  #B2201A;
+    color:  white;
+}
+
 .main_content {
-    height: 95%;
+    height: 100%;
     width: 100%;
     text-align: center;
     vertical-align: middle;
@@ -120,20 +134,6 @@ p {
     right: 0;
 }
 
-footer a {
-    text-align: center;
-    vertical-align: middle;
-    font-family: 'Droid Sans', sans-serif;
-    font-weight: 400;
-    position: relative;
-    bottom: 10px;
-}
-
-.small_view {
-    position: relative;
-    bottom: 25px;
-}
-
 .desktop_controls {
     font-size: 1.5em;
 }
@@ -141,23 +141,17 @@ footer a {
 .top80 {
     margin-top: 80px;
 }
-.bottom10 {
-	margin-bottom: 10px;
-}
-.bottom20 {
-	margin-bottom: 20px;
-}
-.bottom40 {
-	margin-bottom: 40px;
-}
+
 .bottom80 {
     margin-bottom: 80px;
 }
+
 .top30 {
 	margin-top: 30px;
 }
-.left10 {
-	margin-left: 10px;
+
+.category {
+	margin-bottom: 10px;
 }
 
 .title1 {
@@ -173,11 +167,6 @@ footer a {
     font-family: 'Open Sans Condensed', sans-serif;
     color: #B2201A;
     line-height: 0.2;
-}
-
-button {
-    background-color:  #B2201A;
-    color:  white;
 }
 
 .helvetica {
