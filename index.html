@@ -84,6 +84,8 @@
 
         var timeOut;
 
+        var mobile = false;
+
         function initializeQuestionQueue(){
             interviewMath.data.questions = interviewMath.data.questions.sort(function(){return 0.5 - Math.random()});
         }
@@ -150,6 +152,31 @@
             }
         }
 
+        function checkViewport(){
+            if(($(window).width())<768){
+                $('.main').css("padding-right", "200px");
+                $('.main_content').css("height", "120%");
+                $('.question_text').css("font-size", "1.5em");
+                $('.filters').css("margin-top", "100px");
+                $('.category').css("margin-bottom", "20px");
+                $('.link1').html('Answers');
+                $('.link2').html('Market sizing');
+                $('.link3').html('Slack channel');
+                $('.link4').html('Interview book');
+            }
+            else{
+                $('.main').css("padding-right", "0px");
+                $('.main_content').css("height", "100%");
+                $('.question_text').css("font-size", "1.75em");
+                $('.filters').css("margin-top", "200px");
+                $('.category').css("margin-bottom", "10px");
+                $('.link1').html('Answers to case interview math problems');
+                $('.link2').html('Market sizing numbers to know');
+                $('.link3').html('Free case interview partners');
+                $('.link4').html('Best book for case interview preparation');
+            }
+        }
+
         function showFilters(){
             $('.filter').each(function(index){
                 animateIn($(this), index*100)
@@ -166,12 +193,14 @@
         function animateIn($filter, delay){
             setTimeout(function(){
                 $filter.css({"margin-right": "0px"})
+                $('.mobile_nav').css({"margin-right": "0px"})
             }, delay)
         }
 
         function animateOut($filter, delay){
             setTimeout(function(){
                 $filter.css({"margin-right": "-400px"})
+                $('.mobile_nav').css({"margin-right": "-400px"})
             }, delay)
         }
 
@@ -213,36 +242,24 @@
 
             $(document).ready(function(){
 
+                checkViewport();
+
                 for (let i=0; i<interviewMath.data.topics.length; i++){
                     $('#filters').append("<li class='filter category'>" + interviewMath.data.topics[i] + "</li>");
+                }
+
+                if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+                    mobile = true;
+                    $('.sidebar').append("<p class='mobile_nav'>Click links above to<br>filter by category</p>");
+                    $('.sidebar').css("background-color", "#AC0B08");
+                    $('.filter').css("color", "white");
                 }
 
                 updateTimer();
                 $('#timer').hide();
 
                 $(window).resize(function(){
-                    if(($(window).width())<768){
-                        $('.main').css("padding-right", "200px");
-                        $('.main_content').css("height", "120%");
-                        $('.question_text').css("font-size", "1.5em");
-                        $('.filters').css("margin-top", "100px");
-                        $('.category').css("margin-bottom", "20px");
-                        $('.link1').html('Answers');
-                        $('.link2').html('Market sizing');
-                        $('.link3').html('Slack channel');
-                        $('.link4').html('Interview book');
-                    }
-                    else{
-                        $('.main').css("padding-right", "0px");
-                        $('.main_content').css("height", "100%");
-                        $('.question_text').css("font-size", "1.75em");
-                        $('.filters').css("margin-top", "200px");
-                        $('.category').css("margin-bottom", "10px");
-                        $('.link1').html('Answers to case interview math problems');
-                        $('.link2').html('Market sizing numbers to know');
-                        $('.link3').html('Free case interview partners');
-                        $('.link4').html('Best book for case interview preparation');
-                    }
+                    checkViewport();
                 });
 
                 $(document).keypress(function(e){
@@ -267,6 +284,11 @@
                         resetQuestionQueue();
                     }
                     currentSubCategory = $(this).text().toUpperCase();
+
+                    if (mobile === true){
+                        timeOut = setTimeout(hideFilters, 4000);
+                    }
+
                     showNextQuestion();
                 });
 
@@ -282,7 +304,17 @@
                 });
 
                 $('.sidebar_right').mouseleave(function(){
-                    timeOut = setTimeout(hideFilters, 4000)
+                    timeOut = setTimeout(hideFilters, 4000);
+                });
+
+                $('.sidebar_right').click(function(){
+                    if (mobile === true){
+                        if (! $('.sidebar').hasClass('.hide')){
+                            clearTimeout(timeOut);
+                            showFilters();
+                        }
+                        timeOut = setTimeout(hideFilters, 4000);
+                    }
                 });
             })
         })();
@@ -313,7 +345,7 @@
                     <h2>All questions for <span id="questionCategory"></span> answered!</h2>
                 </div>
                 <div id="timer" class="timer main"></div>
-                <p class="desktop_controls">
+                <p class="desktop_controls main">
                     Press <button class="btn btn-action">return <span id="carriage">&#8629;</span></button> for next question
                 </p>
             </div>

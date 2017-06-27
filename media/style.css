@@ -172,3 +172,12 @@ button {
 .helvetica {
     font-family: Helvetica, Arial, sans-serif;
 }
+
+.sidebar p {
+    color: white;
+}
+
+.mobile_nav {
+    margin-top: 40px;
+    font-weight: bold;
+}
