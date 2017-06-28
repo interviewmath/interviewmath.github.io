@@ -160,14 +160,15 @@ button {
     margin-left: 2.5%;
     font-size: 2.5em;
     font-family: 'Teko', sans-serif;
-    color: #fdfdfd;
+    color: #000E60;
 }
 
 .title2 {
     margin-left: 2.5%;
     font-size: 1.5em;
     font-family: 'Open Sans Condensed', sans-serif;
-    color: #B8BFE3;
+    color: #B2201A;
+    //color: #B8BFE3;
     line-height: 0.2;
 }
 
