@@ -48,7 +48,7 @@ ul > li {
 }
 
 a {
-    color: white;
+    color: #fdfdfd;
 }
 
 a:hover {
@@ -56,7 +56,7 @@ a:hover {
 }
 
 a:visited {
-    color: white;
+    color: #fdfdfd;
 }
 
 p {
@@ -65,7 +65,7 @@ p {
 
 button {
     background-color:  #B2201A;
-    color:  white;
+    color:  #fdfdfd;
 }
 
 .main_content {
@@ -160,7 +160,7 @@ button {
     margin-left: 2.5%;
     font-size: 2.5em;
     font-family: 'Anton', sans-serif;
-    color: white;
+    color: #fdfdfd;
 }
 
 .title2 {
@@ -176,7 +176,7 @@ button {
 }
 
 .sidebar p {
-    color: white;
+    color: #fdfdfd;
 }
 
 .mobile_nav {
