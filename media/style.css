@@ -27,8 +27,7 @@ footer {
 footer a {
     text-align: center;
     vertical-align: middle;
-    font-family: 'Droid Sans', sans-serif;
-    font-weight: 400;
+    font-family: 'Lato', sans-serif;
     position: relative;
     top: 5px;
 }
@@ -59,7 +58,7 @@ a:visited {
 }
 
 p {
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: 'Lato', sans-serif;
 }
 
 button {
@@ -76,7 +75,7 @@ button {
 }
 
 .head {
-	background-color: #000E60;
+    background-color: #000E60;
     padding-top: 5px;
 }
 
