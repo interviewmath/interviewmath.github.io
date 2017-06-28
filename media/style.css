@@ -62,6 +62,7 @@ a:visited {
 
 p {
     font-family: 'Lato', sans-serif;
+    line-height: 1.15;
 }
 
 button {
