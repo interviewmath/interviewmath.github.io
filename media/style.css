@@ -49,15 +49,15 @@ ul > li {
 }
 
 a {
-    color: #fdfdfd;
+    color: #dddddd;
 }
 
 a:hover {
-    color: #AC0B08!important;
+    color: #fff1f2!important;
 }
 
 a:visited {
-    color: #fdfdfd;
+    color: #dddddd;
 }
 
 p {
@@ -89,6 +89,7 @@ button {
     font-size: 1.75em;
     font-family: 'Lato', sans-serif;
     text-align: center;
+    margin-left: 452px;
     position: relative;
     top: 10px;
 }
@@ -112,7 +113,7 @@ button {
 .question_text {
     line-height: 1.5;
     vertical-align: middle;
-    margin-top: 25%;
+    margin-top: 17%;
 }
 
 .filter {
