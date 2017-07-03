@@ -25,6 +25,10 @@ footer {
     text-align: center;
 }
 
+.footer {
+    position: absolute;
+}
+
 footer a {
     text-align: center;
     vertical-align: middle;
@@ -46,6 +50,7 @@ ul > li {
 	list-style: none;
 	display: block;
 	font-family: 'Lato', sans-serif;
+    font-size: 1.25em;
 }
 
 a {
@@ -76,6 +81,7 @@ button {
     text-align: center;
     vertical-align: middle;
     background-color: #e3e4e5;
+    overflow: scroll;
 }
 
 .head {
@@ -89,9 +95,9 @@ button {
     font-size: 1.75em;
     font-family: 'Lato', sans-serif;
     text-align: center;
-    margin-left: 452px;
     position: relative;
     top: 10px;
+    vertical-align: bottom;
 }
 
 .timer::after {
@@ -100,7 +106,7 @@ button {
     height: 20px;
     position: absolute;
     left: -25px;
-    top: 8px;
+    top: 20%;
     background-image: url('Clock_grey.svg');
     background-repeat: no-repeat;
     background-size: 100%;
@@ -116,6 +122,13 @@ button {
     margin-top: 17%;
 }
 
+@media (min-width: 768px){
+    .question_area {
+        width: 90%;
+        margin-left: 5%;
+    }
+}
+
 .filter {
     cursor: pointer;
     margin-right: -400px;
@@ -127,10 +140,10 @@ button {
 }
 
 .sidebar {
-    top: -49px;
     height: 100%;
     overflow: hidden;
-    position: fixed;
+    position: absolute;
+    top: -49px;
 }
 
 .sidebar_right {
@@ -138,7 +151,7 @@ button {
 }
 
 .desktop_controls {
-    font-size: 1.5em;
+    font-size: 1.75rem;
 }
 
 .top80 {
@@ -184,5 +197,19 @@ button {
 
 .mobile_nav {
     margin-top: 40px;
+    font-weight: bold;
+}
+
+.footer_links {
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+}
+
+.footer_link {
+    font-size: 1em;
+}
+
+strong {
     font-weight: bold;
 }

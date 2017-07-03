@@ -9,7 +9,7 @@
     <meta http-equiv="Cache-control" content="public">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="media/style.css">
-    <link rel="icon" type="image/png" href="media/icon.png">
+    <link rel="icon" type="image/ico" href="media/favicon.ico">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Sans">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Anton">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:700">
@@ -156,27 +156,38 @@
         }
 
         function checkViewport(){
+
             if(($(window).width())<768){
                 $('.main').css("padding-right", "200px");
-                $('.main_content').css("height", "120%");
-                $('.question_text').css("font-size", "1.5em");
-                $('.filters').css("margin-top", "100px");
                 $('.category').css("margin-bottom", "20px");
                 $('.link1').html('Answers');
                 $('.link2').html('Market sizing');
                 $('.link3').html('Slack channel');
-                $('.link4').html('Interview book');
+                $('.resize1').detach();
+                $('.resize2').detach();
+                $('.link6').html('Interview book');
+                $('.desktop_controls').html('<strong>Touch</strong> for next question');
             }
             else{
-                $('.main').css("padding-right", "0px");
-                $('.main_content').css("height", "100%");
-                $('.question_text').css("font-size", "1.75em");
-                $('.filters').css("margin-top", "200px");
+                $('.main').css("padding-right", "200px");
                 $('.category').css("margin-bottom", "10px");
                 $('.link1').html('Answers to<br>problems');
                 $('.link2').html('Market sizing<br>numbers to know');
                 $('.link3').html('Free case<br>interview partners');
-                $('.link4').html('Best book for case<br>interview preparation');
+                if (! $('.resize2')){
+                    $('.list_resize').after(`<li class="footer_link resize2">
+                        <p><a class="link5" href="http://www.impactinterview.com/2016/08/free-download-case-interview-books/?utm_source=interviewmath&utm_medium=website">
+                            Free Harvard, Wharton & <br>Kellog Case Books
+                        </a></p>
+                    </li>`);
+                }
+                if (! $('.resize1')){
+                    $('.list_resize').after(`<li class="footer_link resize1">
+                        <p><a class="link4" href="http://thepminterview.com/">Inspired by <br>The PM Interview</a></p>
+                    </li>`);
+                }
+                $('.link6').html('Best book for case<br>interview preparation');
+                $('.desktop_controls').html('Press <button class="btn btn-action">return <span id="carriage">&#8629;</span></button> for next question');
             }
         }
 
@@ -340,7 +351,7 @@
     </header>
     <main id="main" class="container main_content">
         <div class="row top80">
-            <div class="col-sm-8 col-sm-offset-2 text-center bottom80">
+            <div class="col-sm-8 col-sm-offset-2 text-center bottom80 question_area">
                 <div id="question" class="main">
                     <h3 id="question_text" class="lato question_text">Welcome to your case interview math practice software</h3>
                 </div>
@@ -359,21 +370,29 @@
             </div>
         </div>
     </main>
-    <footer id="footer">
-        <div class="container">
-            <div class="col-xs-3">
-                <p><a class="link1 bottom_link" href="http://amzn.to/1z0qR2t">Answers to case <br>interview problems</a></p>
-            </div>
-            <div class="col-xs-3">
-                <p><a class="link2 bottom_link" href="http://www.impactinterview.com/2017/01/market-sizing-numbers-to-know">Market sizing <br>numbers to know</a></p>
-            </div>
-            <div class="col-xs-3">
-                <p><a class="link3 bottom_link" href="http://bit.ly/InterviewPartner">Free case interview <br>partners</a></p>
-            </div>
-            <div class="col-xs-3">
-                <p><a class="link4 bottom_link" href="http://amzn.to/2r2VItl">Best book for case <br>interview preparation</a></p>
-            </div>
-        </div>
+    <footer id="footer" class="footer">
+        <ul id="footer_links" class="footer_links">
+            <li class="footer_link">
+                <p><a class="link1" href="http://amzn.to/1z0qR2t">Answers to case <br>interview problems</a></p>
+            </li>
+            <li class="footer_link">
+                <p><a class="link2" href="http://www.impactinterview.com/2017/01/market-sizing-numbers-to-know">Market sizing <br>numbers to know</a></p>
+            </li>
+            <li class="footer_link list_resize">
+                <p><a class="link3" href="http://bit.ly/InterviewPartner">Free case interview <br>partners</a></p>
+            </li>
+            <li class="footer_link resize1">
+                <p><a class="link4" href="http://thepminterview.com/">Inspired by <br>The PM Interview</a></p>
+            </li>
+            <li class="footer_link resize2">
+                <p><a class="link5" href="http://www.impactinterview.com/2016/08/free-download-case-interview-books/?utm_source=interviewmath&utm_medium=website">
+                    Free Harvard, Wharton & <br>Kellog Case Books
+                </a></p>
+            </li>
+            <li class="footer_link">
+                <p><a class="link6" href="http://amzn.to/2r2VItl">Best book for case <br>interview preparation</a></p>
+            </li>
+        </ul>
     </footer>
 </body>
 </html>
