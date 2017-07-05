@@ -174,17 +174,17 @@
                 $('.link1').html('Answers to<br>problems');
                 $('.link2').html('Market sizing<br>numbers to know');
                 $('.link3').html('Free case<br>interview partners');
-                if (! $('.resize2')){
-                    $('.list_resize').after(`<li class="footer_link resize2">
+                if (! $('.resize2').length){
+                    $(`<li class="footer_link resize2">
                         <p><a class="link5" href="http://www.impactinterview.com/2016/08/free-download-case-interview-books/?utm_source=interviewmath&utm_medium=website">
                             Free Harvard, Wharton & <br>Kellog Case Books
                         </a></p>
-                    </li>`);
+                    </li>`).insertAfter($('.list_resize'));
                 }
-                if (! $('.resize1')){
-                    $('.list_resize').after(`<li class="footer_link resize1">
+                if (! $('.resize1').length){
+                    $(`<li class="footer_link resize1">
                         <p><a class="link4" href="http://thepminterview.com/">Inspired by <br>The PM Interview</a></p>
-                    </li>`);
+                    </li>`).insertAfter($('.list_resize'));
                 }
                 $('.link6').html('Best book for case<br>interview preparation');
                 $('.desktop_controls').html('Press <button class="btn btn-action">return <span id="carriage">&#8629;</span></button> for next question');
