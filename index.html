@@ -158,7 +158,6 @@
         function checkViewport(){
 
             if(($(window).width())<768){
-                $('.main').css("padding-right", "200px");
                 $('.category').css("margin-bottom", "20px");
                 $('.link1').html('Answers');
                 $('.link2').html('Market sizing');
@@ -169,7 +168,6 @@
                 $('.desktop_controls').html('<strong>Touch</strong> for next question');
             }
             else{
-                $('.main').css("padding-right", "200px");
                 $('.category').css("margin-bottom", "10px");
                 $('.link1').html('Answers to<br>problems');
                 $('.link2').html('Market sizing<br>numbers to know');
@@ -208,6 +206,8 @@
             setTimeout(function(){
                 $filter.css({"margin-right": "0px"})
                 $('.mobile_nav').css({"margin-right": "0px"})
+                $('.main').css("padding-right", "200px")
+                $('.timer').css("padding-right", "200px")
             }, delay)
         }
 
@@ -215,7 +215,17 @@
             setTimeout(function(){
                 $filter.css({"margin-right": "-400px"})
                 $('.mobile_nav').css({"margin-right": "-400px"})
-            }, delay)
+            }, delay);
+            setTimeout(function(){
+                if (mobile === true){
+                    $('.main').css("padding-right", "25px");
+                    $('.timer').css("padding-right", "25px");
+                }
+                else {
+                    $('.main').css("padding-right", "0px");
+                    $('.timer').css("padding-right", "10%");
+                }
+            }, 1000);
         }
 
         // Timer Functions
@@ -267,6 +277,7 @@
                     $('.sidebar').append("<p class='mobile_nav'>Click links above to<br>filter by category</p>");
                     $('.sidebar').css("background-color", "#AC0B08");
                     $('.filter').css("color", "white");
+                    $('.main_content').css("overflow", "scroll");
                 }
 
                 updateTimer();

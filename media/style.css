@@ -81,7 +81,7 @@ button {
     text-align: center;
     vertical-align: middle;
     background-color: #e3e4e5;
-    overflow: scroll;
+    overflow: visible;
 }
 
 .head {
@@ -156,6 +156,12 @@ button {
 
 .top80 {
     margin-top: 80px;
+}
+
+@media (max-width: 768px){
+    .top80{
+        margin-top: 25%;
+    }
 }
 
 .bottom80 {
