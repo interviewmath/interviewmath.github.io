@@ -17,7 +17,6 @@ header {
 }
 
 footer {
-    height: 50px;
     position: fixed;
     width: 100%;
     bottom: 0;
@@ -81,7 +80,7 @@ button {
     text-align: center;
     vertical-align: middle;
     background-color: #e3e4e5;
-    overflow: visible;
+    overflow: scroll;
 }
 
 .head {
@@ -120,6 +119,7 @@ button {
     line-height: 1.5;
     vertical-align: middle;
     margin-top: 17%;
+    font-size: 1.5em;
 }
 
 @media (min-width: 768px){
